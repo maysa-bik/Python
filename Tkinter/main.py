@@ -21,7 +21,7 @@ game_title = Label(top_frame, bg = "#5D6D7E", fg="white", text="Minesweeper", fo
 game_title.place(x= new.width_prct(25), y=0)
 
 # format de grille (شبكة)
-center_frame = Frame(window, bg= "black", width= new.width_prct(75), height= new.height_prct(75)).place(x=new.width_prct(30),y=new.height_prct(30))
+center_frame = Frame(window, bg= "white", width= new.width_prct(75), height= new.height_prct(75)).place(x=new.width_prct(30),y=new.height_prct(30))
 
 # dessign de grille (رسم الشبكه)
  

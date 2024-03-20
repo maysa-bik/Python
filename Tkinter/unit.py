@@ -11,6 +11,7 @@ class Cell:
         self.is_mine = is_mine
         self.cell_btn_object = None
 
+
     def create_btn_object(self, location):
         btn = Button(
             location,
@@ -24,4 +25,3 @@ class Cell:
         self.cell_btn_object.configure(bg="red")
         ctypes.windll.user32.messageBoxW(0,"vous clickez sur a mine", "rejouer", 0)
         sys.exit()
-        

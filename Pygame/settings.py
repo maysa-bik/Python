@@ -15,23 +15,23 @@ Yellow = (255, 255, 0)
 BGCOLOUR = DarkGrey
 
 # game paramaitres :
-TileSize = 32
-Rows = 15
-Cols = 15
-Amount_Mines = 5
-WIDTH = TileSize * Rows
-HEIGHT = TileSize * Cols
+TILESIZE = 32
+ROWS = 15
+COLS = 15
+AMOUNT_MINES = 5
+WIDTH = TILESIZE * ROWS
+HEIGHT = TILESIZE * COLS
 FPS = 60
-Title = "MinesWeeper"
+TITLE = "MinesWeeper"
 
 tile_numbers = []
 for i in range(1, 9):
-    #  pour changer le size de photo (pygame.transform.scale) avec le size de carée pour ça on mis (TileSize, TileSize)
-    tile_numbers.append(pygame.transform.scale(pygame.image.load(os.path.join("Photoes", f"Tile{i}.png")), (TileSize, TileSize)))
+    #  pour changer le size de photo (pygame.transform.scale) avec le size de carée pour ça on mis (TILESIZE, TILESIZE)
+    tile_numbers.append(pygame.transform.scale(pygame.image.load(os.path.join("Photoes", f"Tile{i}.png")), (TILESIZE, TILESIZE)))
 
-tile_empty = (pygame.image.load(os.path.join("Photoes", f"TileEmpty.png")), (TileSize, TileSize))    
-tile_exploded = (pygame.image.load(os.path.join("Photoes", f"TileExploded.png")), (TileSize, TileSize)) 
-tile_flag = (pygame.image.load(os.path.join("Photoes", f"TileFlag.png")), (TileSize, TileSize)) 
-tile_mine = (pygame.image.load(os.path.join("Photoes", f"TileMine.png")), (TileSize, TileSize)) 
-tile_unknown = (pygame.image.load(os.path.join("Photoes", f"TileUnknown.png")), (TileSize, TileSize)) 
-tile_not_mine = (pygame.image.load(os.path.join("Photoes", f"TileNotMine.png")), (TileSize, TileSize)) 
+tile_empty = (pygame.image.load(os.path.join("Photoes", f"TileEmpty.png")), (TILESIZE, TILESIZE))    
+tile_exploded = (pygame.image.load(os.path.join("Photoes", f"TileExploded.png")), (TILESIZE, TILESIZE)) 
+tile_flag = (pygame.image.load(os.path.join("Photoes", f"TileFlag.png")), (TILESIZE, TILESIZE)) 
+tile_mine = (pygame.image.load(os.path.join("Photoes", f"TileMine.png")), (TILESIZE, TILESIZE)) 
+tile_unknown = (pygame.image.load(os.path.join("Photoes", f"TileUnKnown.png")), (TILESIZE, TILESIZE)) 
+tile_not_mine = (pygame.image.load(os.path.join("Photoes", f"TileNotMine.png")), (TILESIZE, TILESIZE)) 

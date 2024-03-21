@@ -6,11 +6,12 @@ from sprites import *
 class Game:
     def __init__(self):
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
-        pygame.display.set_caption(Title)
+        pygame.display.set_caption(TITLE)
         self.clock = pygame.time.Clock()
 
     def nouveau(self):
-        pass
+        self.board = Board()
+        self.board.display_board()
 
     def run(self):
         self.jouant = True
@@ -21,7 +22,7 @@ class Game:
 
     def draw(self):
         self.screen.fill(BGCOLOUR)
-
+        self.board.draw(self.screen)
         pygame.display.flip()
 
     def events(self):

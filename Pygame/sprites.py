@@ -1,3 +1,4 @@
+import random
 import pygame
 from settings import *
 
@@ -17,7 +18,7 @@ class Tile:
         self.flagged = flagged
 
     def draw(self, board_surface):
-        board_surface.blit(tile_unknown, (self.x, self.y))
+        board_surface.blit(self.image, (self.x, self.y))
 
 
 
@@ -41,6 +42,20 @@ class Board:
        tile_empty مربع فارغ كصورة 
        """
        self.board_list = [[Tile(col, row, tile_empty, ".") for row in range(ROWS)] for col in range(COLS)] 
+       self.place_mines()
+
+    def place_mines(self):
+        for _ in range(AMOUNT_MINES):
+            while True:
+                x = random.randint(0, ROWS-1)
+                y = random.randint(0, COLS-1)
+
+                if self.board_list[x][y].type == ".":
+                    self.board_list[x][y].image = tile_mine
+                    self.board_list[x][y].type = "X"
+                    break
+
+
     
     def draw(self, screen):
         for row in self.board_list:

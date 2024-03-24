@@ -18,7 +18,13 @@ class Tile:
         self.flagged = flagged
 
     def draw(self, board_surface):
-        board_surface.blit(self.image, (self.x, self.y))
+        if not self.flagged and self.revealed:
+           board_surface.blit(self.image, (self.x, self.y))
+        elif self.flagged and self.revealed:
+            board_surface.blit(tile_flag, (self.x, self.y))
+        elif not self.revealed:
+            board_surface.blit(tile_unknown, (self.x, self.y))
+                   
 
 
 

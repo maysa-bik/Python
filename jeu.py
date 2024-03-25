@@ -27,12 +27,10 @@ class Jeu:
             temps_actuel = pygame.time.get_ticks() // 1000
             temps_passe = temps_actuel - self.temps_debut
             self.events()
-            self.mettre_a_jour()
             self.dessiner(temps_passe)
-            #self.events()
             #self.dessiner()
-        #else:
-            #self.fin_ecran()
+        else:
+            self.fin_ecran()
 
     def dessiner(self, temps_passe):
         self.screen.fill(BGCOLOUR)
@@ -60,7 +58,7 @@ class Jeu:
                 mx //= TILESIZE
                 my //= TILESIZE
 
-                if event.button == 1:
+                if event.button == 1: # click gauch
                     if not self.grille.grille_list[mx][my].flagged:
                         if not self.grille.creuser(mx, my):
                             for row in self.grille.grille_list:
@@ -73,7 +71,7 @@ class Jeu:
                                         case.revealed = True
                             self.playing = False
 
-                if event.button == 3:
+                if event.button == 3:  # Clic droit
                     if not self.grille.grille_list[mx][my].revealed:
                         self.grille.grille_list[mx][my].flagged = not self.grille.grille_list[mx][my].flagged
 
@@ -84,11 +82,6 @@ class Jeu:
                         for case in row:
                             if not case.revealed:
                                 case.flagged = True
-    
-    def mettre_a_jour(self):
-        pass
-        # Mettre à jour le score en fonction des actions du joueur
-        # Mettre à jour le nombre de mines restantes en fonction des actions du joueur
 
 
     def fin_ecran(self):
@@ -100,3 +93,7 @@ class Jeu:
 
                 if event.type == pygame.MOUSEBUTTONDOWN:
                     return
+jeu = Jeu()
+while True:
+    jeu.nouveau()
+    jeu.run()                

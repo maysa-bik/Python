@@ -11,20 +11,35 @@ class Jeu:
     def nouveau(self):
         self.grille = Grille()
         self.grille.afficher_grille()
+        self.temps_debut = pygame.time.get_ticks() // 1000  # Temps en secondes
+        self.score = 0
+        self.mines_restantes = AMOUNT_MINES
+
+        # Initialisation de la police de caractères pour l'affichage du temps
+        pygame.font.init()
+        self.font = pygame.font.Font(None, 36)
         
 
     def run(self):
         self.playing = True
         while self.playing:
             self.clock.tick(FPS)
+            temps_actuel = pygame.time.get_ticks() // 1000
+            temps_passe = temps_actuel - self.temps_debut
             self.events()
-            self.dessiner()
-        else:
-            self.fin_ecran()
+            self.mettre_a_jour()
+            self.dessiner(temps_passe)
+            #self.events()
+            #self.dessiner()
+        #else:
+            #self.fin_ecran()
 
-    def dessiner(self):
+    def dessiner(self, temps_passe):
         self.screen.fill(BGCOLOUR)
         self.grille.dessiner(self.screen)
+        # Affichage du temps écoulé à l'écran
+        temps_texte = self.font.render("Temps: " + str(temps_passe), True, Black)
+        self.screen.blit(temps_texte, (10, 10))
         pygame.display.flip()
 
     def check_gagn(self):
@@ -69,6 +84,12 @@ class Jeu:
                         for case in row:
                             if not case.revealed:
                                 case.flagged = True
+    
+    def mettre_a_jour(self):
+        pass
+        # Mettre à jour le score en fonction des actions du joueur
+        # Mettre à jour le nombre de mines restantes en fonction des actions du joueur
+
 
     def fin_ecran(self):
         while True:

@@ -2,6 +2,12 @@ import pygame
 from parametres import *
 from grille import Grille
 
+# types list
+# "." -> unknown
+# "X" -> mine
+# "C" -> clue
+# "/" -> empty
+
 class Jeu:
     def __init__(self):
         # Initialisation de la fenêtre du jeu
@@ -55,7 +61,7 @@ class Jeu:
             if event.type == pygame.QUIT:
                 pygame.quit()
                 quit(0)
-
+            # نقسمهم على عدد صحيح من اجل الحصول على حجم الاطار بحيث يعطيني الموقع الدقيق لكل مربع من مربعات 
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mx, my = pygame.mouse.get_pos()
                 mx //= TILESIZE
@@ -65,8 +71,10 @@ class Jeu:
                     if not self.grille.grille_list[mx][my].flagged:
                         # Si le joueur a creusé une mine
                         if not self.grille.creuser(mx, my):
+                            # سنقوم بالكشف عن كل المربعات موجودة بجانبها اذا كانت مربعا فارغا بشكل اساسي 
                             for row in self.grille.grille_list:
                                 for case in row:
+                                    #في حال وضعنا علامه على  مثال علم ولم يطله لغما  
                                     if case.flagged and case.type != "X":
                                         case.flagged = False
                                         case.revealed = True

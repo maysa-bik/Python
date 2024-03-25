@@ -9,22 +9,22 @@ class Game:
         pygame.display.set_caption(TITLE)
         self.clock = pygame.time.Clock()
 
-    def nouveau(self):
+    def new(self):
         self.board = Board()
         self.board.display_board()
 
     def run(self):
-        self.jouant = True
-        while self.jouant:
+        self.playing = True
+        while self.playing:
             self.clock.tick(FPS)
             self.events()
             self.draw()
         else:
-            self.end_screen()    
+            self.end_screen()
 
     def draw(self):
         self.screen.fill(BGCOLOUR)
-        self.board.draw(self.screen) 
+        self.board.draw(self.screen)
         pygame.display.flip()
 
     def check_win(self):
@@ -32,7 +32,7 @@ class Game:
             for tile in row:
                 if tile.type != "X" and not tile.revealed:
                     return False
-        return True            
+        return True
 
     def events(self):
         for event in pygame.event.get():
@@ -47,9 +47,9 @@ class Game:
 
                 if event.button == 1:
                     if not self.board.board_list[mx][my].flagged:
-                        #dig and check if exploded 
+                        # dig and check if exploded
                         if not self.board.dig(mx, my):
-                            #explode
+                            # explode
                             for row in self.board.board_list:
                                 for tile in row:
                                     if tile.flagged and tile.type != "X":
@@ -59,9 +59,11 @@ class Game:
                                     elif tile.type == "X":
                                         tile.revealed = True
                             self.playing = False
+
                 if event.button == 3:
                     if not self.board.board_list[mx][my].revealed:
                         self.board.board_list[mx][my].flagged = not self.board.board_list[mx][my].flagged
+
                 if self.check_win():
                     self.win = True
                     self.playing = False
@@ -70,21 +72,19 @@ class Game:
                             if not tile.revealed:
                                 tile.flagged = True
 
-
     def end_screen(self):
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     quit(0)
-                if event.type == pygame.MOUSEBUTTONDOWN:
-                    return                                
-                                
 
-                
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    return
+
 
 game = Game()
 while True:
-    game.nouveau()
+    game.new()
     game.run()
 

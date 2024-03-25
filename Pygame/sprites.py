@@ -1,7 +1,7 @@
 import random
 
 import pygame
-from settings import *
+from parametres import *
 
 # types list
 # "." -> unknown

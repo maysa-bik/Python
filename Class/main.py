@@ -2,6 +2,7 @@ import pygame
 from jeu import Jeu
 
 
+
 def main():
     pygame.init()
     jeu = Jeu()

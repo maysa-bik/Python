@@ -22,6 +22,7 @@ class Jeu:
 
     def run(self):
         self.playing = True
+        self.nouveau()
         while self.playing:
             self.clock.tick(FPS)
             temps_actuel = pygame.time.get_ticks() // 1000

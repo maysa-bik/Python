@@ -69,6 +69,16 @@ class Game:
                         for tile in row:
                             if not tile.revealed:
                                 tile.flagged = True
+
+
+    def end_screen(self):
+        while True:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    quit(0)
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    return                                
                                 
 
                 

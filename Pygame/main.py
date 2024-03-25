@@ -1,5 +1,5 @@
 import pygame
-from parametres import *
+from settings import *
 from sprites import *
 
 

@@ -14,7 +14,7 @@ Red = (255, 0, 0)
 Yellow = (255, 255, 0)
 BGCOLOUR = DarkGrey
 
-# game paramaitres :
+# Jeu paramaitres :
 TILESIZE = 32
 ROWS = 20
 COLS = 20

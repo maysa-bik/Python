@@ -26,7 +26,7 @@ class Grille:
         self.place_mines()
         self.place_indices()
         # Liste pour suivre les cases creusées
-        self.dug = [] 
+        self.dug = [] # متغير سيكون قائمة فارغة سنقوم بتخزين جميع قيم التي حفرها بالفعل 
 
     def place_mines(self):
         # Placement aléatoire des mines sur la grille
